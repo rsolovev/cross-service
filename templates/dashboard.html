@@ -1,8 +1,10 @@
-{% extends 'base.html' %}
-{% block content %}
-
-<ul>
-  <li>Username: {{ user.username }}</li>
-</ul>
-    <a href="{% url 'home' %}">home</a>
+{% extends "base.html" %}
+{% block body_block %}
+    Username: {{ username }} <br>
+    {% for i in info %}
+        Location: {{ i.location }} <br>
+        Bio: {{ i.bio }} <br>
+        Org: {{ i.organization }} <br>
+        Type: {{ i.type }}<br>
+    {% endfor %}
 {% endblock %}
