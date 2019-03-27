@@ -7,8 +7,11 @@ An online platform where various service providers can reach and offer their ser
 2. `cd `to project directory and run following commands:
  
     Create database:
-    `python3 manage.py makemigrations`
+    
+    `python3 manage.py makemigrations` 
+    
     `python3 manage.py makemigrations crosservice/`
+    
     `python3 manage.py migrate`
     
     Run server:
