@@ -8,21 +8,26 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from crossservice.models import *
 
+
+# start page - just render html page
 def index(request):
     return render(request, 'index.html')
 
 
+# success login response
 @login_required
 def special(request):
     return HttpResponse("You are logged in !")
 
 
+# redirecting to index page after logging out
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
 
+# registration algorithm
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -47,6 +52,7 @@ def register(request):
                    'registered': registered})
 
 
+# login logic
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -66,6 +72,7 @@ def user_login(request):
         return render(request, 'login.html', {})
 
 
+# user dashboard render
 def dashboard(request):
     user = auth.get_user(request)
     username = user.get_username()
