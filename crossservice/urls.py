@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^user_login/$', views.user_login, name='user_login'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    url(r'^delete_account/$', views.user_delete, name='user_delete'),
+    url(r'^update_account/$', views.user_update, name='user_update')
 ]

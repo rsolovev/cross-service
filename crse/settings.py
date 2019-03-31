@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crossservice.apps.CrossserviceConfig',
+    'crossservice',
 ]
 
 MIDDLEWARE = [

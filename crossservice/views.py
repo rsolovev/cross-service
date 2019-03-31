@@ -1,15 +1,17 @@
 # dappx/views.py
 from django.contrib import auth
-from django.shortcuts import render
-from crossservice.forms import UserForm, UserProfileInfoForm
+from django.shortcuts import render, redirect
+from crossservice.forms import UserForm, UserProfileInfoForm, EditProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from crossservice.models import *
 
-
 # start page - just render html page
+from crse import secret_keys
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -25,6 +27,14 @@ def special(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+@login_required
+def user_delete(request):
+    user = auth.get_user(request)
+    user.set_password(secret_keys.passwd)
+    user.save()
+    return render(request, 'login.html')
 
 
 # registration algorithm
@@ -78,3 +88,15 @@ def dashboard(request):
     username = user.get_username()
     info = UserProfileInfo.objects.filter(user_id=user.id)
     return render(request, 'dashboard.html', {'username': username, 'info': info})
+
+
+def user_update(request):
+    if request.method == 'POST':
+        form = EditProfileForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('crossservice:dashboard')
+    else:
+        form = EditProfileForm(instance=request.user)
+
+    return render(request, 'update.html', {'form': form})

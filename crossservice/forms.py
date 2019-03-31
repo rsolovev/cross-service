@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserChangeForm
+
 from crossservice.models import UserProfileInfo
 from django.contrib.auth.models import User
 
@@ -17,3 +19,9 @@ class UserProfileInfoForm(forms.ModelForm):
     class Meta:
         model = UserProfileInfo
         fields = ('organization', 'location', 'type', 'bio')
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfileInfo
+        fields = ('organization', 'location', 'bio')
