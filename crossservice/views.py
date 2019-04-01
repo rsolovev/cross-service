@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from crossservice.models import *
+from django.views.generic import ListView, DetailView
 
 # start page - just render html page
 from crse import secret_keys
@@ -123,3 +124,12 @@ def post_service(request):
     else:
         form = PostServiceForm()
     return render(request, 'post_service.html', {'form': form})
+
+
+class listPosts(ListView):
+    model = ServicePostInfo
+
+
+class detailPosts(DetailView):
+    context_object_name = 'post'
+    queryset = ServicePostInfo.objects.all()
