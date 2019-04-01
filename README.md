@@ -10,7 +10,7 @@ An online platform where various service providers can reach and offer their ser
     
     `python3 manage.py makemigrations` 
     
-    `python3 manage.py makemigrations crosservice/`
+    `python3 manage.py makemigrations crosservice`
     
     `python3 manage.py migrate`
     
