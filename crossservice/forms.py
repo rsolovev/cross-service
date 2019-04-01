@@ -30,4 +30,4 @@ class EditProfileForm(forms.ModelForm):
 class PostServiceForm(forms.ModelForm):
     class Meta:
         model = ServicePostInfo
-        fields = ('name', 'description', 'cities_of_provision', 'time_of_availability', 'rate_payment_per_hour')
+        fields = '__all__'
