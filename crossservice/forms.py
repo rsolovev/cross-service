@@ -18,7 +18,7 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta:
         model = UserProfileInfo
-        fields = ('organization', 'location', 'type', 'bio')
+        fields = ('organization', 'location', 'bio')
 
 
 class EditProfileForm(forms.ModelForm):

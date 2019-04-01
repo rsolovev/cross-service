@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from multiselectfield import MultiSelectField
 
 
 # Create your models here.
@@ -12,7 +11,6 @@ class UserProfileInfo(models.Model):
     organization = models.TextField(max_length=100)
     location = models.TextField(max_length=50)
     bio = models.TextField(max_length=100)
-    type = MultiSelectField(choices=type_choices, max_choices=1)
 
 
 def __str__(self):
