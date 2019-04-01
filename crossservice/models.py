@@ -12,6 +12,7 @@ class UserProfileInfo(models.Model):
 
 
 class ServicePostInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     service_name = models.TextField(max_length=100)
     service_description = models.TextField(max_length=280)  # like in Twitter:D
     city_of_provision = models.TextField(max_length=150)

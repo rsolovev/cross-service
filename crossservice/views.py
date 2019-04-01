@@ -112,7 +112,7 @@ def user_update(request):
 
 def post_service(request):
     if request.method == 'POST':
-        form = PostServiceForm(data=request.POST)
+        form = PostServiceForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('crossservice:dashboard')
