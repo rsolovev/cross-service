@@ -1,7 +1,7 @@
 # dappx/views.py
 from django.contrib import auth
 from django.shortcuts import render, redirect
-from crossservice.forms import UserForm, UserProfileInfoForm, EditProfileForm, EditBasic
+from crossservice.forms import UserForm, UserProfileInfoForm, EditProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
