@@ -109,6 +109,7 @@ def user_update(request):
 
     return render(request, 'update.html', {'form': form})
 
+
 def post_service(request):
     if request.method == 'POST':
         form = PostServiceForm(data=request.POST)
