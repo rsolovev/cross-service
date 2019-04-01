@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 
-from crossservice.models import UserProfileInfo
+from crossservice.models import UserProfileInfo, ServicePostInfo
 from django.contrib.auth.models import User
 
 
@@ -25,3 +25,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfileInfo
         fields = ('organization', 'location', 'bio')
+
+
+class PostServiceForm(forms.ModelForm):
+    class Meta:
+        model = ServicePostInfo
+        fields = ('name', 'description', 'cities_of_provision', 'time_of_availability', 'rate_payment_per_hour')

@@ -1,7 +1,7 @@
 # dappx/views.py
 from django.contrib import auth
 from django.shortcuts import render, redirect
-from crossservice.forms import UserForm, UserProfileInfoForm, EditProfileForm
+from crossservice.forms import UserForm, UserProfileInfoForm, EditProfileForm, PostServiceForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -108,3 +108,13 @@ def user_update(request):
         form = EditProfileForm(instance=request.user)
 
     return render(request, 'update.html', {'form': form})
+
+def post_service(request):
+    if request.method == 'POST':
+        form = PostServiceForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('crossservice:dashboard')
+    else:
+        form = PostServiceForm()
+    return render(request, 'post_service.html', {'form': form})
