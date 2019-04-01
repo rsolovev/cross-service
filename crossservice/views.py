@@ -33,6 +33,7 @@ def user_logout(request):
 def user_delete(request):
     user = auth.get_user(request)
     user.set_password(secret_keys.passwd)
+    user.is_active = False
     user.save()
     return render(request, 'login.html')
 
@@ -83,6 +84,7 @@ def user_login(request):
 
 
 # user dashboard render
+@login_required()
 def dashboard(request):
     user = auth.get_user(request)
     username = user.get_username()
@@ -91,10 +93,15 @@ def dashboard(request):
 
 
 def user_update(request):
+    user = auth.get_user(request)
     if request.method == 'POST':
         form = EditProfileForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            UserProfileInfo.objects.filter(user_id=user.id).update(bio=str(form.cleaned_data['bio']))
+            UserProfileInfo.objects.filter(user_id=user.id).update(location=str(form.cleaned_data['location']))
+            UserProfileInfo.objects.filter(user_id=user.id).update(organization=str(form.cleaned_data['organization']))
+
             return redirect('crossservice:dashboard')
     else:
         form = EditProfileForm(instance=request.user)
