@@ -1,0 +1,8 @@
+Note: Links for Sprint 2 Delivery of Group BS2-8-4's project (Cross Service)
+
+Github Repository:
+	https://github.com/rsolovev/cross-service
+
+
+Github Project Board:
+	https://github.com/rsolovev/cross-service/projects/2
