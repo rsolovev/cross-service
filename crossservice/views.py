@@ -94,6 +94,10 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'username': username, 'info': info})
 
 
+"""
+Update User's additional info (not uname or password)
+Works on django update forms
+"""
 def user_update(request):
     user = auth.get_user(request)
     if request.method == 'POST':
@@ -111,6 +115,11 @@ def user_update(request):
     return render(request, 'update.html', {'form': form})
 
 
+"""
+Post a service, service is assigned to particular user as 'owner'
+Works on django POST forms
+After user posting, instance is added to db 
+"""
 def post_service(request):
     if request.method == 'POST':
         user = auth.get_user(request)
