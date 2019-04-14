@@ -33,3 +33,11 @@ class PostServiceForm(forms.ModelForm):
         fields = (
             'service_name', 'service_description', 'city_of_provision', 'time_of_availability',
             'rate_of_payment_per_hour')
+
+
+class EditPostForm(forms.ModelForm):
+    class Meta:
+        model = ServicePostInfo
+        fields = (
+            'service_name', 'service_description', 'city_of_provision', 'time_of_availability',
+            'rate_of_payment_per_hour')
