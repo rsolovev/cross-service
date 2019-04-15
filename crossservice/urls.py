@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^delete_account/$', views.user_delete, name='user_delete'),
     url(r'^update_account/$', views.user_update, name='user_update'),
     url(r'^post_service/$', views.post_service, name='post'),
+    url(r'^delete_post/$', views.remove_service_post, name='post_delete'),
+    url(r'^update_post/$', views.update_service_post, name='post_update'),
     path('posts/', views.listPosts.as_view(), name='posts'),
 ]
